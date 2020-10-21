@@ -1,19 +1,15 @@
 #include <avr/io.h>
-#include "../arduino/Arduino.h"
-#include "FastLED.h"
 #include "LightningConfig.h"
+#include "Arduino.h"
+#include "FastLED.h"
 #include "util/delay.h"
 #include "ChannelData.h"
 #include "avr/sfr_defs.h"
-#include "TickCounter.h"
+	
 
 // Static Memory
 CRGB leds[CHANNELS];
 channelData inputs[CHANNELS];
-
-#if DEBUG
-TickCounter::TickCounter<3> tc;
-#endif
 
 void setupData()
 {
@@ -106,9 +102,7 @@ void processActivity()
 int main(void)
 {
 	// DEBUG: indicate reset through wait
-	tc.startMetering();
 	_delay_ms(500);
-	tc.stopMetering();
 	
 	// initialization
 	setupLeds();
@@ -117,18 +111,12 @@ int main(void)
 	// main loop
 	while(1)
 	{
-		tc.startMetering();
 		
 		// process changes
 		processActivity();
 		
-		tc.stopMetering();
-		tc.startMetering();
-		
 		// output changes
 		FastLED.show();
-		
-		tc.stopMetering();
 		
 		// wait
 		_delay_ms(LOOP_WAIT_MS);
