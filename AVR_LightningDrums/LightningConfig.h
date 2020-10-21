@@ -1,0 +1,62 @@
+/*
+ * LightningConfig.h
+ *
+ * Created: 03/02/2020 19:58:31
+ *  Author: SelfBiasedCode
+ * GPIO config: check avr/io.... files for register address
+ */ 
+
+#ifndef LIGHTNINGCONFIG_H_
+#define LIGHTNINGCONFIG_H_
+
+#include "FastLED.h"
+#include <avr/io.h>
+
+// Globals
+#define CHANNELS 6
+#define FLASH_TIME_MS 80
+#define LOOP_WAIT_MS 1
+
+#define DEFAULT_COLOUR_HIGH CRGB::Red
+#define DEFAULT_COLOUR_LOW CRGB::MidnightBlue
+
+// Channel 0: High Tom 1
+#define CHAN0_TRIGGER_REG 0x03 // PINB
+#define CHAN0_TRIGGER_PIN 1
+#define CHAN0_COLOUR_HIGH DEFAULT_COLOUR_HIGH
+#define CHAN0_COLOUR_LOW DEFAULT_COLOUR_LOW
+
+// Channel 1: High Tom 2
+#define CHAN1_TRIGGER_REG 0x03 // PINB
+#define CHAN1_TRIGGER_PIN 0
+#define CHAN1_COLOUR_HIGH DEFAULT_COLOUR_HIGH
+#define CHAN1_COLOUR_LOW DEFAULT_COLOUR_LOW
+
+// Channel 2: Floor Tom 1
+#define CHAN2_TRIGGER_REG 0x03 // PINB
+#define CHAN2_TRIGGER_PIN 0
+#define CHAN2_COLOUR_HIGH DEFAULT_COLOUR_HIGH
+#define CHAN2_COLOUR_LOW DEFAULT_COLOUR_LOW
+
+// Channel 3: Floor Tom 2
+#define CHAN3_TRIGGER_REG 0x03 // PINB
+#define CHAN3_TRIGGER_PIN 0
+#define CHAN3_COLOUR_HIGH DEFAULT_COLOUR_HIGH
+#define CHAN3_COLOUR_LOW DEFAULT_COLOUR_LOW
+
+// Channel 4: Bass Drum 1
+#define CHAN4_TRIGGER_REG 0x03 // PINB
+#define CHAN4_TRIGGER_PIN 0
+#define CHAN4_COLOUR_HIGH DEFAULT_COLOUR_HIGH
+#define CHAN4_COLOUR_LOW DEFAULT_COLOUR_LOW
+
+// Channel 5: Bass Drum 2
+#define CHAN5_TRIGGER_REG 0x03 // PINB
+#define CHAN5_TRIGGER_PIN 0
+#define CHAN5_COLOUR_HIGH DEFAULT_COLOUR_HIGH
+#define CHAN5_COLOUR_LOW DEFAULT_COLOUR_LOW
+
+// Calculations
+#define RESET_WAIT (FLASH_TIME_MS / LOOP_WAIT_MS)
+
+#endif /* LIGHTNINGCONFIG_H_ */
